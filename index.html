@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Waimai Buddy</title>
+    <title>Waimai Buddy - DeepSeek</title>
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -105,7 +105,6 @@
         }
         .animate-pop { animation: resultPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        /* 抽屉样式 - 完美适配 iPhone */
         #settings-drawer {
             transform: translateY(105%);
             transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
@@ -161,7 +160,7 @@
             
             <div class="glass-card mt-10 rounded-[36px] p-7 relative z-10">
                 <div id="rec-display" class="min-h-[50px]">
-                    <h2 id="rec-headline" class="text-2xl font-black text-slate-900 leading-tight">一窝？</h2>
+                    <h2 id="rec-headline" class="text-2xl font-black text-slate-900 leading-tight">一窝！</h2>
                     <p id="rec-subtext" class="text-slate-400 text-[9px] mt-1.5 font-bold uppercase tracking-widest">智能推荐引擎</p>
                 </div>
 
@@ -170,7 +169,7 @@
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"></circle><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"></circle><circle cx="12" cy="12" r="1.5" fill="currentColor"></circle></svg>
                     </button>
                     <button id="ai-btn" onclick="getAICreativeMenu()" class="btn-dark text-white py-4 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] active:scale-95">
-                        Gemini AI
+                        DeepSeek AI
                     </button>
                 </div>
             </div>
@@ -268,7 +267,7 @@
             </div>
         </div>
 
-        <!-- 底部导航 - 简化版 -->
+        <!-- 底部导航 -->
         <nav class="bg-white/80 backdrop-blur-2xl border-t border-slate-100 p-4 safe-bottom flex justify-around items-center absolute bottom-0 left-0 right-0 z-40">
             <button onclick="switchTab('record')" id="nav-record-btn" class="p-4 rounded-2xl text-orange-500 transition-all">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
@@ -281,58 +280,76 @@
             </button>
         </nav>
 
-        <!-- 手机端适配抽屉 -->
+        <!-- 设置抽屉 -->
         <div id="settings-overlay" onclick="toggleSettings(false)" class="overlay fixed inset-0 z-[60] opacity-0 pointer-events-none"></div>
         <div id="settings-drawer" class="fixed bottom-0 left-0 right-0 bg-white rounded-t-[40px] px-8 pt-4 pb-12 z-[70] shadow-2xl safe-bottom">
             <div class="w-10 h-1.5 bg-slate-100 rounded-full mx-auto mb-8"></div>
-            <h3 class="text-xl font-black text-slate-900 mb-1">设置 API Key</h3>
-            <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">启用 Gemini 智能推荐功能</p>
+            <h3 class="text-xl font-black text-slate-900 mb-1">设置 DeepSeek API</h3>
+            <p class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">启用 DeepSeek 智能推荐功能</p>
             
             <div class="space-y-6">
                 <div class="space-y-3">
-                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">GEMINI_API_KEY</label>
-                    <input id="api-key-input" type="password" placeholder="粘贴您的 Key 到这里" class="w-full bg-slate-50 border-0 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-orange-500/10 text-sm font-bold outline-none">
+                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1">DEEPSEEK_API_KEY</label>
+                    <input id="api-key-input" type="password" placeholder="粘贴您的 DeepSeek Key" class="w-full bg-slate-50 border-0 rounded-2xl px-6 py-5 focus:ring-4 focus:ring-orange-500/10 text-sm font-bold outline-none">
                 </div>
                 
                 <div class="flex gap-3">
                     <button onclick="saveApiKey()" class="flex-1 bg-slate-900 text-white py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-xl active:scale-95">保存设置</button>
                     <button onclick="clearApiKey()" class="px-6 bg-slate-50 text-slate-400 py-5 rounded-2xl font-black text-[10px] uppercase tracking-widest active:scale-95">重置</button>
                 </div>
-                <p class="text-center text-[8px] text-slate-300 font-bold px-2 leading-relaxed">您的密钥仅存储在浏览器本地，直接与 Google 服务器通信。</p>
+                <p class="text-center text-[8px] text-slate-300 font-bold px-2 leading-relaxed">API 密钥保存在本地，直接与 DeepSeek 官方 API 通信。</p>
             </div>
         </div>
 
         <div id="toast" class="fixed bottom-24 left-1/2 -translate-x-1/2 bg-black/90 text-white px-6 py-3.5 rounded-full text-[9px] font-black uppercase tracking-widest opacity-0 transition-all duration-300 pointer-events-none z-[100] whitespace-nowrap">
-            SUCCESS.
+            DONE.
         </div>
     </div>
 
     <script>
-        const MODEL_NAME = "gemini-2.5-flash-preview-09-2025";
+        // 配置项
+        const DS_MODEL = "deepseek-chat";
+        const DS_URL = "https://api.deepseek.com/chat/completions";
+        
         let records = JSON.parse(localStorage.getItem('diet_records_v5')) || [];
         let currentCalendarDate = new Date();
         const getTodayStr = () => new Date().toLocaleDateString('zh-CN', {year:'numeric', month:'2-digit', day:'2-digit'});
         let selectedDateStr = getTodayStr();
 
-        function getSavedKey() { return localStorage.getItem('wb_api_key') || ""; }
+        function getSavedKey() { return localStorage.getItem('wb_ds_api_key') || ""; }
 
-        async function callGemini(prompt, systemInstruction = "") {
+        async function callDeepSeek(prompt, systemInstruction = "你是一个风趣的外卖推荐助手。") {
             const currentKey = getSavedKey();
             if (!currentKey) { 
                 toggleSettings(true); 
                 throw new Error("Missing API Key"); 
             }
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${currentKey}`;
-            const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
+            
+            const payload = {
+                model: DS_MODEL,
+                messages: [
+                    { role: "system", content: systemInstruction },
+                    { role: "user", content: prompt }
+                ],
+                stream: false
+            };
             
             try {
-                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                const response = await fetch(DS_URL, { 
+                    method: 'POST', 
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${currentKey}`
+                    }, 
+                    body: JSON.stringify(payload) 
+                });
+
                 if (!response.ok) {
-                    if(response.status === 403) { showToast("KEY 无效或受限"); toggleSettings(true); }
+                    if(response.status === 401) { showToast("KEY 无效"); toggleSettings(true); }
                     throw new Error("API Request Failed");
                 }
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "暂无建议";
+                return data.choices?.[0]?.message?.content || "暂无建议";
             } catch (e) { throw e; }
         }
 
@@ -353,18 +370,18 @@
         function saveApiKey() {
             const key = document.getElementById('api-key-input').value.trim();
             if(!key) return showToast("请输入有效的 KEY");
-            localStorage.setItem('wb_api_key', key);
-            showToast("已成功连接 AI");
+            localStorage.setItem('wb_ds_api_key', key);
+            showToast("已连接 DeepSeek");
             setTimeout(() => toggleSettings(false), 800);
         }
 
         function clearApiKey() {
-            localStorage.removeItem('wb_api_key');
+            localStorage.removeItem('wb_ds_api_key');
             document.getElementById('api-key-input').value = "";
             showToast("密钥已清除");
         }
 
-        // --- Core UI Logic ---
+        // --- UI 逻辑 ---
         function init() {
             setDynamicGreeting();
             updateTabPosition();
@@ -384,18 +401,18 @@
             const btn = document.getElementById('ai-btn');
             
             btn.disabled = true;
-            head.innerText = "正在大脑旋转...";
-            sub.innerText = "SCANNING YOUR TASTE";
+            head.innerText = "DeepSeek 思考中...";
+            sub.innerText = "ANALYZING YOUR TASTE";
             
             try {
                 const history = records.slice(0, 5).map(r => r.name).join('、');
-                const prompt = `根据历史：${history || '无'}。推荐一个有趣的外卖，3-8个字，幽默风。不要标点。`;
-                const result = await callGemini(prompt, "有趣的生活管家。");
-                head.innerText = result.replace(/["'“”]/g, '').trim();
-                sub.innerText = "GEMINI 深度定制";
+                const prompt = `根据用户最近吃的：${history || '还没记录'}。推荐一个有趣、好吃的外卖菜品，3-8个字，文风幽默。不要任何标点符号。`;
+                const result = await callDeepSeek(prompt);
+                head.innerText = result.replace(/[#*"'“”]/g, '').trim();
+                sub.innerText = "DEEPSEEK 深度定制";
                 head.classList.add('animate-pop');
             } catch (e) {
-                head.innerText = "吃顿大餐吧！";
+                head.innerText = "随便吃点好吃的！";
                 sub.innerText = "智能引擎休眠中";
             } finally { btn.disabled = false; }
         }
